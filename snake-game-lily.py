@@ -1,3 +1,6 @@
+#link to trinket project: 
+#https://trinket.io/python/e6a39e94df
+
 from processing import *
 import random
 
@@ -14,10 +17,12 @@ snake_size = 20
 apple_x = random.randint(10,480)
 apple_y = random.randint(10,280)
 apple_size = 15
+
 apple_color = color(255, 107, 107)
 
 direction = "L"
 speed = 5
+
 score = 0
 
 game_over = False
@@ -26,16 +31,16 @@ game_over = False
 def keyPressed():
   global direction
   if keyCode == 37:
-    direction = "L"
-
+   direction = "L"
+  
   if keyCode == 39:
-    direction = "R"
-
+   direction = "R"
+  
   if keyCode == 38:
-    direction = "U"
-
+   direction = "U"
+  
   if keyCode == 40:
-    direction = "D"
+   direction = "D"
 
 def moveSnake():
   global snake_x, snake_y, speed
@@ -51,7 +56,6 @@ def moveSnake():
 def snakeEatsApple():
   global apple_x, apple_y, apple_color, speed, score
   if pointInRect(snake_x, snake_y, apple_x, apple_y, apple_size, apple_size) == True or pointInRect(snake_x + snake_size, snake_y, apple_x, apple_y, apple_size, apple_size) == True or pointInRect(snake_x, snake_y + snake_size, apple_x, apple_y, apple_size, apple_size) == True or pointInRect(snake_x + snake_size, snake_y + snake_size, apple_x, apple_y, apple_size, apple_size) == True:
-    print "Snake eats apple"
     apple_x = random.randint(10,480)
     apple_y = random.randint(10,280)
     # change apple color
@@ -60,20 +64,22 @@ def snakeEatsApple():
     newBlue = random.randint(0, 255)
     apple_color = color(newRed,newGreen,newBlue)
     # Speed up
-    speed = speed+1
+    speed = speed+0.5
     # score points
     score = score+1
 
 def lost():
   global game_over
-  if snake_x>= 600 or snake_x<= 0:
+  if snake_x>= 500 or snake_x<= 0:
     game_over = True
-  if snake_y>= 400 or snake_y<= 0:
+  if snake_y>= 300 or snake_y<= 0:
     game_over = True
 
 def draw():
   if game_over == True:
     background(210, 11, 0)
+    textSize(70)
+    text("Game Over",70,150)
   else:
     background(0, 0, 0)
     #draw apple
@@ -87,11 +93,12 @@ def draw():
     moveSnake()
     # check if snake eats apple
     snakeEatsApple()
-    #lost, game over
+    #lost
     lost()
     #score
     textSize(20)
     text("Score="+str(score), 5, 20)
+    #game over
 
 
 def pointInRect(pt_x, pt_y, rect_x, rect_y, rect_w, rect_h):
