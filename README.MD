@@ -6,6 +6,6 @@ In the Snake Game, the player controls the movement of a snake with the up/down/
 https://trinket.io/python/e6a39e94df
 
 ## Screenshots
-![Scene 1](image1.png)
-![Scene 2](image2.png)
-![Game over](gameover.png)
+<img src="image1.png" width="550">
+<img src="image2.png" width="550">
+<img src="gameover.png" width="550">
